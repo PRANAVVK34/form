@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body{
+        margin: 0;
+        padding: 0;
+        
+    }
+    section{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 3% auto;
+        
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    input{
+        width: 30em;
+        height: 2em;
+        margin: 10px auto;
+        border: 1px solid black;
+        border-radius: 3px;
+    }
+    button{
+        width: auto;
+        height: 2em;
+        border-radius: 5px;
+        border: none;
+        background-color: green;
+        color: white;
+        margin-top: 14px;
+    }
+    button:hover{
+        cursor: pointer;
+    }
+    video{
+        width: 25em;
+        height: 30em;
+        
+    }
+
+    </style>
+     
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <div class="forms">
+            <form action="/submit" method="POST" id="form">
+                <label>Enter Your Name</label>
+                <input type="text"  name="name" id="name" class="form-control">
+                <label>Enter Your Email</label>
+                <input type="text"  name="email" id="email" class="form-control">
+                <label>Description</label>
+                <input type="text"  name="description" id="description" class="form-control">
+                <button type="submit" id="button" value="submit">Send</button>
+            </form>
+        </div>
+        <img src="http://studenthealth.mst.edu/media/studentsupport/studenthealth/images/newpics/forms.png" alt="please fill the form">
+        <video id="video" autoplay>
+        
+        </video>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        const NAME=document.getElementById('name')
+        const EMAIL=document.getElementById('email')
+        const FORM=document.getElementById('form')
+        const VIDEO=document.getElementById('video')
+    
+
+    $(FORM).submit(e=>{
+        if(NAME.value<3|| EMAIL.value<6){
+            e.preventDefault();
+            checkForm()
+        }
+    })
+    $(NAME).focusout((e)=>{
+        var x=e.target.value
+        if(x===""||x.length<3){
+        checkName()    
+        }
+    })
+
+    $(EMAIL).focusout(e=>{
+        var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        var x=e.target.value
+        if(x==="" || x.length < 6||!x.match(mailformat)){
+            checkMail()
+        }
+    })
+
+    
+    //video playing
+    const checkName=()=>{
+        var video=VIDEO
+        video.src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4";
+        video.appendChild(video);   
+    }
+
+    const checkMail=()=>{
+        var vdo=VIDEO
+        vdo.src="http://techslides.com/demos/sample-videos/small.webm";
+        video.appendChild(vdo);   
+    }
+    const checkForm=()=>{
+        var v=VIDEO
+        v.src="https://media.w3.org/2010/05/sintel/trailer.mp4";
+        video.appendChild(v);   
+    }
+
+
+    </script>  
+</body>
+</html>
